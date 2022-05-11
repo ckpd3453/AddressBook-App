@@ -18,7 +18,7 @@ public class AddressBookServiceImpl implements IAddressBookService {
     public AddressbookData createAddressbooData(@Valid AddressbookDTO addressbookDTO) {
         log.info("Adding A New AddressBook Data");
         AddressbookData addressbookData = null;
-        addressbookData = new AddressbookData(addressbookDataList.size() + 1, addressbookDTO);
+        addressbookData = new AddressbookData(addressbookDTO);
         addressbookDataList.add(addressbookData);
         return addressbookData;
     }

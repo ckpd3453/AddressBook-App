@@ -3,12 +3,14 @@ package com.bridgelabz.addressbookapp.dto;
 
 
 
+import lombok.Data;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-public class AddressbookDTO {
+public @Data class AddressbookDTO {
 
     @NotNull(message = "ERROR: Name cannot be null!!!")
     @NotEmpty(message = "ERROR: Name cannot be empty!")
