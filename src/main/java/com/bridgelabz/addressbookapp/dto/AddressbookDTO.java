@@ -16,7 +16,7 @@ public class AddressbookDTO {
     public String name;
 
     @NotNull(message = "ERROR: phone number cannot be null!!")
-    @Min(value = 1111111111, message = "ERROR: Please enter 10 digit number")
+    @Min(value = 1000000000, message = "ERROR: Please enter 10 digit number")
     public String phNumber;
 
 }
