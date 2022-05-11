@@ -14,9 +14,15 @@ public class AddressbookDTO {
     @NotEmpty(message = "ERROR: Name cannot be empty!")
     @Pattern(regexp = "^([A-Z][a-zA-Z]{2,}[ ]?)+$", message = "ERROR: Please enter a valid name!")
     public String name;
+    public  String city;
+    public  String state;
+    public  String zipCode;
 
     @NotNull(message = "ERROR: phone number cannot be null!!")
     @Min(value = 1000000000, message = "ERROR: Please enter 10 digit number")
     public String phNumber;
+    public String email;
+
+
 
 }
