@@ -24,6 +24,10 @@ public @Data class AddressbookData {
     private String email;
 
     public AddressbookData(AddressbookDTO addressbookDTO) {
+        this.updateAddressBookData(addressbookDTO);
+    }
+
+    public void updateAddressBookData(AddressbookDTO addressbookDTO) {
         this.personId = personId;
         this.name = addressbookDTO.name;
         this.city = addressbookDTO.city;

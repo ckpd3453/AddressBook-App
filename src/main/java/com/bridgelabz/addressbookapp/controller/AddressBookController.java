@@ -24,7 +24,7 @@ public class AddressBookController {
     IAddressBookService addressbooService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> addAddressbookData(@Valid @RequestBody AddressbookDTO addressbookDTO) {
+    public ResponseEntity<ResponseDTO> addAddressbookData(@RequestBody AddressbookDTO addressbookDTO) {
         log.debug("AddressBook DTO: "+addressbookDTO.toString());
         AddressbookData addressbookData = addressbooService.createAddressbooData(addressbookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data successfully ", addressbookData);
