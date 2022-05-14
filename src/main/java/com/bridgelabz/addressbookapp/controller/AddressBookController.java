@@ -24,7 +24,7 @@ public class AddressBookController {
     IAddressBookService addressbooService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> addAddressbookData(@RequestBody AddressbookDTO addressbookDTO) {
+    public ResponseEntity<ResponseDTO> addAddressbookData(@RequestBody @Valid AddressbookDTO addressbookDTO) {
         log.debug("AddressBook DTO: "+addressbookDTO.toString());
         AddressbookData addressbookData = addressbooService.createAddressbooData(addressbookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data successfully ", addressbookData);
@@ -45,6 +45,12 @@ public class AddressBookController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
+    @GetMapping("/get/name/{name}")
+    public ResponseEntity<ResponseDTO> getContactByName(@PathVariable(value = "name") String name) {
+        AddressbookData addressbookData = addressbooService.getContactByName(name);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call By Name Success",addressbookData);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
     @PutMapping("/update/{personId}")
     public ResponseEntity<ResponseDTO> updateAddressbookData(@PathVariable int personId,@Valid @RequestBody AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = addressbooService.updateAddressbookData(personId, addressbookDTO);
@@ -57,5 +63,12 @@ public class AddressBookController {
         addressbooService.deleteAddressbooData(personId);
         ResponseDTO responseDTO = new ResponseDTO("Deleted data successfully", "person id: " + personId);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/city/{city}")
+    public ResponseEntity<ResponseDTO> getByCity(@PathVariable ("city")  String city){
+        List<AddressbookData> addressbookData = addressbooService.getByCity(city);
+    ResponseDTO responseDTO = new ResponseDTO("Get call by city success", addressbookData);
+    return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 }

@@ -19,7 +19,7 @@ public class AddressBookServiceImpl implements IAddressBookService {
     @Autowired
     private IAdderssBookRepository addressBookRepository;
     @Override
-    public AddressbookData createAddressbooData(AddressbookDTO addressbookDTO) {
+    public AddressbookData createAddressbooData(@Valid AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = new AddressbookData(addressbookDTO);
         log.debug("Person Data: "+addressbookData.toString());
         return addressBookRepository.save(addressbookData);
@@ -49,5 +49,15 @@ public class AddressBookServiceImpl implements IAddressBookService {
        AddressbookData addressbookData = this.getAddressbookDataById(personId);
        addressBookRepository.delete(addressbookData);
         }
+
+    @Override
+    public AddressbookData getContactByName(String name) {
+        return addressBookRepository.findByName(name);
+    }
+
+    @Override
+    public List<AddressbookData> getByCity(String city) {
+        return addressBookRepository.getByCity(city);
+    }
 }
 
